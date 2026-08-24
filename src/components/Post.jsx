@@ -9,7 +9,7 @@ const Post = ({ post }) => {
 
   return (
     <>
-      <div className="card post-card" style={{ width: "30rem" }}>
+      <div className="card post-card" style={{ width: "50%" }}>
         <div className="card-body">
           <h5 className="card-title">{post.title}</h5>
 
@@ -31,12 +31,12 @@ const Post = ({ post }) => {
 
           <div className="reaction">
             <div className="like">
-              <FcLike /> {post.reactions.like}
+              <FcLike /> {post.reactions.likes}
             </div>
 
             <div className="dislike">
               <BiSolidDislike />
-              {post.reactions.dislike}
+              {post.reactions.dislikes}
             </div>
           </div>
         </div>

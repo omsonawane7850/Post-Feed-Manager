@@ -7,8 +7,8 @@ const CreatePost = () => {
   const userIdElement = useRef();
   const postTitleElement = useRef();
   const postBodyElement = useRef();
-  const likeElement = useRef();
-  const dislikeElement = useRef();
+  const likesElement = useRef();
+  const dislikesElement = useRef();
   const tagsElement = useRef();
 
   const handleSubmit = (event) => {
@@ -16,17 +16,17 @@ const CreatePost = () => {
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
-    const like = likeElement.current.value;
-    const dislike = dislikeElement.current.value;
+    const likes = likesElement.current.value;
+    const dislikes = dislikesElement.current.value;
     const tags = tagsElement.current.value.split(" ");
 
-    addPost(userId, postTitle, postBody, like, dislike, tags);
+    addPost(userId, postTitle, postBody, likes, dislikes, tags);
 
     userIdElement.current.value = "";
     postTitleElement.current.value = "";
     postBodyElement.current.value = "";
-    likeElement.current.value = "";
-    dislikeElement.current.value = "";
+    likesElement.current.value = "";
+    dislikesElement.current.value = "";
     tagsElement.current.value = "";
   };
 
@@ -72,30 +72,30 @@ const CreatePost = () => {
 
       <div className="row mb-3">
         <div className="col">
-          <label htmlFor="like" className="form-label">
+          <label htmlFor="likes" className="form-label">
             Likes
           </label>
           <input
             type="number"
             className="form-control"
-            id="like"
+            id="likes"
             placeholder="Number of likes"
             min="0"
-            ref={likeElement}
+            ref={likesElement}
           />
         </div>
 
         <div className="col">
-          <label htmlFor="dislike" className="form-label">
+          <label htmlFor="dislikes" className="form-label">
             Dislikes
           </label>
           <input
             type="number"
             className="form-control"
-            id="dislike"
+            id="dislikes"
             placeholder="Number of dislikes"
             min="0"
-            ref={dislikeElement}
+            ref={dislikesElement}
           />
         </div>
       </div>
