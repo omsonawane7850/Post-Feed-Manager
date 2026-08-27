@@ -16,11 +16,9 @@ const CreatePost = () => {
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
-    const likes = likesElement.current.value;
-    const dislikes = dislikesElement.current.value;
+    const likes = Number(likesElement.current.value);
+    const dislikes = Number(dislikesElement.current.value);
     const tags = tagsElement.current.value.split(" ");
-
-    addPost(userId, postTitle, postBody, likes, dislikes, tags);
 
     userIdElement.current.value = "";
     postTitleElement.current.value = "";
@@ -28,6 +26,22 @@ const CreatePost = () => {
     likesElement.current.value = "";
     dislikesElement.current.value = "";
     tagsElement.current.value = "";
+
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: postTitle,
+        body: postBody,
+        reactions: { likes, dislikes },
+        userId: userId,
+        tags: tags,
+      }),
+    })
+      .then((res) => res.json())
+      .then((post) => {
+        addPost(post);
+      });
   };
 
   return (
