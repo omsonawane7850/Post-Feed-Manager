@@ -12,16 +12,11 @@ const postListReducer = (currentPostList, action) => {
 
   if (action.type === "DELETE_POST") {
     newPostList = currentPostList.filter(
-      (post) => post.id !== action.payload.postId
+      (post) => post.id !== action.payload.postId,
     );
-  } 
-  
-  else if (action.type === "ADD_POST") {
+  } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currentPostList];
-  } 
-  
-  else if (action.type === "ADD_INITIAL_POSTS") {
-    // Sirf first time API ke posts Context mein daalenge
+  } else if (action.type === "ADD_INITIAL_POSTS") {
     if (currentPostList.length === 0) {
       newPostList = action.payload;
     }
