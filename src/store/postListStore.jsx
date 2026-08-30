@@ -77,7 +77,6 @@ const PostListProvider = ({ children }) => {
       });
     return () => {
       controller.abort();
-      console.log("unmount");
     };
   }, []);
   return (
